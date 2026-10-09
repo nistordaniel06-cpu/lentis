@@ -2,6 +2,18 @@
 
 Prima versiune a website-ului **Lentis**, inspirată ca structură de site-urile de optică online, cu brandingul original Lentis (ochi albastru + triunghi și numele cu `s` mic).
 
+## Date oficiale de contact (din cartea de vizită furnizată)
+
+- Brand: **Lentis — Optică Medicală Mobilă**
+- Slogan: **„Vedere clară, oriunde ai nevoie!”**
+- Reprezentant: **Andrei Hâlcu**, Administrator | Tehnician optometrist
+- Telefon: **0774 987 055** (`tel:+40774987055`)
+- Adresă de contact: **Prel. Ghencea nr. 94–100, Sector 6, București**
+- Facebook (nume afișat): **Optica Lentis**; linkul este de căutare Facebook până la confirmarea URL-ului paginii oficiale.
+- Servicii: **consultații optometrice**, **ochelari de vedere**, **lentile de contact**, **la domiciliu / la firmă** (disponibilitatea se confirmă telefonic).
+
+Nu se presupune că la adresă există o clinică cu program permanent; spațiul ilustrat în machetă nu reprezintă o fotografie reală.
+
 ## Ce funcționează acum
 
 - Homepage premium și responsive (desktop / tabletă / mobil)
