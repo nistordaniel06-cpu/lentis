@@ -1,0 +1,12 @@
+{
+  "name": "lentis-site",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Lentis — demo e-commerce & optică medicală",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve.mjs dist"
+  }
+}

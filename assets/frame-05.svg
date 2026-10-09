@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <defs><linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8298af"/><stop offset="1" stop-color="#4c5666"/></linearGradient><linearGradient id="glass" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#c1d2e1" stop-opacity=".54"/><stop offset="1" stop-color="#fff" stop-opacity=".14"/></linearGradient><filter id="s"><feDropShadow dx="0" dy="15" stdDeviation="10" flood-opacity=".11"/></filter></defs>
+  <ellipse cx="320" cy="273" rx="257" ry="15" fill="#dce7ef" opacity=".48"/>
+  <g filter="url(#s)" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M60 135 L16 117" stroke="url(#metal)" stroke-width="11"/><path d="M577 135 L624 118" stroke="url(#metal)" stroke-width="11"/>
+  <path d="M88 117 C144 105 223 105 259 123 C275 132 272 202 253 231 C238 254 138 254 114 234 C90 213 78 142 88 117Z" fill="url(#glass)" stroke="url(#metal)" stroke-width="15"/>
+  <path d="M381 123 C416 105 496 105 552 117 C562 141 550 213 526 234 C501 254 401 254 386 231 C366 202 363 132 381 123Z" fill="url(#glass)" stroke="url(#metal)" stroke-width="15"/>
+  <path d="M269 143 C286 122 355 122 372 143" fill="none" stroke="url(#metal)" stroke-width="13"/>
+  <path d="M119 133 Q166 120 205 129" fill="none" stroke="#fff" opacity=".53" stroke-width="6"/><path d="M398 130 Q440 119 492 129" fill="none" stroke="#fff" opacity=".53" stroke-width="6"/>
+  </g></svg>

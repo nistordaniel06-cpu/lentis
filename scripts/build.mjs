@@ -1,0 +1,10 @@
+import { cpSync, mkdirSync, rmSync, existsSync } from 'node:fs';
+import { join, resolve } from 'node:path';
+const root = resolve(import.meta.dirname, '..');
+const dist = join(root, 'dist');
+rmSync(dist, { recursive: true, force: true });
+mkdirSync(dist, { recursive: true });
+for (const file of ['index.html','styles.css','app.js']) cpSync(join(root,file),join(dist,file));
+cpSync(join(root,'assets'),join(dist,'assets'),{recursive:true});
+if (existsSync(join(root,'robots.txt'))) cpSync(join(root,'robots.txt'),join(dist,'robots.txt'));
+console.log('Build static Lentis: dist/ pregătit fără dependențe.');
