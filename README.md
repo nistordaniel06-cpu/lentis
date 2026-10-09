@@ -1,57 +1,37 @@
-# Lentis · Optică medicală & marketplace
+# Lentis — platformă optică medicală & marketplace (MVP Beta)
 
-Prima versiune a website-ului **Lentis**, inspirată ca structură de site-urile de optică online, cu brandingul original Lentis (ochi albastru + triunghi și numele cu `s` mic).
+Site: https://lentis-optica.vercel.app/ · Repository: https://github.com/nistordaniel06-cpu/lentis
 
-## Date oficiale de contact (din cartea de vizită furnizată)
+## Funcționează acum
+- Homepage responsive, catalog demonstrativ, favorite/coș local (fără plăți).
+- Proba virtuală: cameră sau fotografie, trei forme, ajustare manuală; detectare facială automată opțională via MediaPipe în browser. Nu trimite imagini către server. Doar simulare, fără măsurare pupilară medicală.
+- SEO: meta title, canonical, descriere, Open Graph, schema.org Optician, robots.txt, sitemap.xml.
+- Consimțământ explicit pentru analytics; fără cookie analytics înainte de accept.
+- Admin UI disponibil pe ruta neafișată în navigație: `/atelier-console-7e4/`, dar **autentificarea este obligatorie**.
 
-- Brand: **Lentis — Optică Medicală Mobilă**
-- Slogan: **„Vedere clară, oriunde ai nevoie!”**
-- Reprezentant: **Andrei Hâlcu**, Administrator | Tehnician optometrist
-- Telefon: **0774 987 055** (`tel:+40774987055`)
-- Adresă de contact: **Prel. Ghencea nr. 94–100, Sector 6, București**
-- Facebook (nume afișat): **Optica Lentis**; linkul este de căutare Facebook până la confirmarea URL-ului paginii oficiale.
-- Servicii: **consultații optometrice**, **ochelari de vedere**, **lentile de contact**, **la domiciliu / la firmă** (disponibilitatea se confirmă telefonic).
+## Necesită conectare pentru funcționalitate persistentă
+Panoul de administrare, publicarea produselor reale, parteneriatele reale și dashboard-ul de trafic folosesc un backend dedicat Supabase + Vercel Functions. **Nu sunt conectate până la configurarea unui proiect Supabase dedicat LentiS.** Nu utiliza un proiect Supabase existent, cu alt scop, fără a decide explicit acest lucru. Nu există parolă demo de administrator.
 
-Nu se presupune că la adresă există o clinică cu program permanent; spațiul ilustrat în machetă nu reprezintă o fotografie reală.
+1. Creează un proiect Supabase dedicat LentiS (verifică întâi costurile). Rulează `supabase/001_lentis.sql` în SQL Editor.
+2. Creează utilizatorul administrator în Supabase Auth > Users, apoi adaugă UUID-ul lui manual în `public.lentis_admins`.
+3. În `config.js` adaugă URL-ul Supabase și cheia **publishable** (anon, sigură pentru client) — **NU cheia service-role**. Setează `partnerSubmissionEnabled: true` și `analyticsEnabled: true` doar după deploy API.
+4. În Vercel: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `LENTIS_ORIGIN=https://lentis-optica.vercel.app`, `LENTIS_ANALYTICS_SALT` (secret aleatoriu suficient de lung). Exclusiv server-side, fără prefix VITE_ sau NEXT_PUBLIC_.
+5. Activează protecție anti-spam (Turnstile) și rate limiting persistent înainte de colectarea cererilor reale.
+6. Actualizează politica de confidențialitate, perioada de retenție, consimțământul și datele operatorului. Configurează ștergerea datelor analytics după 90 zile (sau interval aprobat), plus export/ștergere.
+7. Pagina SEO poate fi editată în studio, dar metadatele crawlerelor sunt statice în `index.html`: sincronizează-le cu build-ul/SSR pentru modificări SEO vizibile motoarelor de căutare. Indexare după trecerea în producție reală.
 
-## Ce funcționează acum
+## Securitate
+- URL-ul „ascuns” nu este o măsură de securitate. Accesul admin cere Supabase Auth și apartenența la `lentis_admins` verificată prin RLS.
+- Adminul nu poate gestiona date când Supabase nu este conectat; nu există fake-login / parolă în JS.
+- Serviciile API necesită cheie secretă doar pe server. Nici o fotografie de cameră nu este încărcată.
+- Analiza traficului necesită consimțământ; IP-ul brut nu se salvează; se reține un hash cu rotație zilnică și țara derivată din infrastructura serverului.
+- Consent cookies și localStorage nu reprezintă o evidență GDPR completă; revizia juridică este necesară înainte de colectarea reală.
 
-- Homepage premium și responsive (desktop / tabletă / mobil)
-- Catalog demonstrativ, filtrare după categorie, căutare, sortare după preț
-- Favorite și coș cu cantități, persistente în `localStorage`
-- Secțiune pentru optica medicală Lentis și contact telefonic
-- Formular demonstrativ de înscriere a clinicilor; datele sunt salvate **numai în browserul utilizatorului**, nu trimise nicăieri
-- Ferestre explicative pentru programare, comandă și probă virtuală (încă neconectate)
-- Elemente SEO de bază, navigare accesibilă, layout fără dependențe grele
-
-**Atenție:** Acesta este un prototip de interfață, nu un magazin operațional. Produsele, prețurile și imaginile de produs sunt **exemple vizuale**, nu oferte comerciale validate. Coșul nu procesează plăți, formularul nu trimite solicitări, programările nu sunt înregistrate. Pentru lansare: integrare backend, inventar real, procesator de plăți, gestionare comenzi, GDPR, email-uri, loguri de consimțământ, contracte cu clinici și un mecanism verificabil de atribuire/comisionare a lead-urilor.
-
-## Rulare locală
-
-```bash
-npm run dev
-```
-
-Pentru build static:
-
-```bash
-npm run build
-npm run preview
-```
-
-## Publicare pe GitHub Pages
-
-1. Creează un repository **public** gol pe GitHub cu numele `lentis` (nu adăuga README automat dacă încarci proiectul complet).
-2. Încarcă toate fișierele acestui proiect pe branch-ul `main`, inclusiv `.github/workflows/deploy.yml`.
-3. În **Settings → Pages → Build and deployment**, alege **GitHub Actions**.
-4. GitHub Actions va construi site-ul Vite și îl va publica la `https://<user>.github.io/lentis/`, după finalizarea cu succes a workflow-ului.
-
-Logo-ul oficial utilizat este derivat din prima variantă aleasă, fără modificări de identitate.
+## Lansare locală
+`npm run dev` → `http://localhost:5173` (serverul local nu execută funcțiile `/api`; pentru acestea este necesar Vercel). `npm run build` produce `dist/`, care poate fi servit static. Pentru Vercel folosește codul din rădăcina repo-ului, cu funcțiile din `api/`.
 
 ## Roadmap
-
-1. Backend: autentificare, conturi client, catalog/inventar și panou admin
-2. Comenzi reale + plăți + facturare, stoc, retururi și notificări
-3. Portal clinici: verificare, servicii, calendar, programări și comision/lead atribuit
-4. Test virtual bazat pe cameră numai cu consimțământ și respectarea datelor biometrice
-5. Analitice, SEO avansat, performanță și publicare pe domeniu propriu
+- Faza 1: Foto/cameră try-on și admin securizat pregătit; SEO; consimțământ.
+- Faza 2: Database dedicated + auth/RLS, produse reale & stock, validare clinici, lead ledger, inbox.
+- Faza 3: facial tracking robust testat mobil, potrivirea ramelor pe lățimea feței și măsurători optice calibrate (numai cu validare specialist); galerie produse multi-angle.
+- Faza 4: rezervări clinici, comisioane doar pentru conversii confirmate, plăți și e-factura / POS.

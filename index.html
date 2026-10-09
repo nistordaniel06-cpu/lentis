@@ -4,17 +4,27 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#ffffff" />
-  <meta name="robots" content="noindex,nofollow" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://lentis-optica.vercel.app/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ro_RO" />
+  <meta property="og:url" content="https://lentis-optica.vercel.app/" />
+  <meta property="og:image" content="https://lentis-optica.vercel.app/assets/hero-portrait.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="description" content="Lentis — optică medicală mobilă în București, Sector 6. Consultații optometrice acasă sau la firmă, ochelari de vedere și lentile de contact. Tel. 0774 987 055." />
   <meta property="og:title" content="Lentis — Vedere clară, oriunde ai nevoie!" />
   <meta property="og:description" content="Optică medicală mobilă, consultații optometrice, ochelari de vedere și lentile de contact. București, Sector 6 • 0774 987 055." />
-  <title>Lentis — Vezi lumea mai clar</title>
+  <title>Lentis | Ochelari de vedere & Optică medicală mobilă București</title>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Optician","name":"Lentis — Optică medicală mobilă","url":"https://lentis-optica.vercel.app/","telephone":"+40774987055","address":{"@type":"PostalAddress","streetAddress":"Prelungirea Ghencea nr. 94-100","addressLocality":"București","addressRegion":"Sector 6","addressCountry":"RO"},"description":"Consultații optometrice la domiciliu sau la firmă, ochelari de vedere și lentile de contact."}</script>
   <link rel="icon" type="image/png" href="./assets/lentis-symbol.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./config.js"></script>
   <script defer src="./app.js"></script>
+  <script defer src="./lentis-platform.js"></script>
+  <script defer src="./try-on.js"></script>
 </head>
 <body>
 <svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
@@ -61,7 +71,7 @@
 <div class="filter-list" id="filters" role="group" aria-label="Filtrează produse"><button class="filter active" data-filter="toate" type="button">Toate produsele</button><button class="filter" data-filter="vedere" type="button">Rame de vedere</button><button class="filter" data-filter="soare" type="button">Ochelari de soare</button><button class="filter" data-filter="lentile" type="button">Lentile de contact</button></div>
 <div id="products" class="product-grid" aria-live="polite"></div><div id="emptyState" class="empty-state" hidden><svg><use href="#i-search"/></svg><h3>Nu am găsit produse</h3><p>Încearcă un alt termen sau schimbă filtrul.</p><button type="button" class="text-link" id="resetFilters">Arată toate produsele →</button></div><div class="shop-note"><svg><use href="#i-sparkle"/></svg> Catalog demonstrativ — produsele, prețurile și disponibilitatea vor fi configurate înainte de lansare.</div>
 </div></section>
-<section class="editorial section"><div class="container"><div class="editorial-banner"><div class="editorial-bg">L</div><div class="editorial-content"><div class="eyebrow">MAI MULT DECÂT O PERECHE DE OCHELARI</div><h2>O alegere bună<br/> începe cu <em>tine.</em></h2><p>Pregătim recomandări personalizate și probă virtuală, ca alegerea ramelor să devină mai ușoară.</p><button type="button" class="button button-white" data-action="tryon">Descoperă ce pregătim <svg><use href="#i-arrow"/></svg></button></div><div class="editorial-art"><div class="decor-circle"></div><img src="./assets/tryon.webp" alt="Previzualizare concept de probă virtuală"/><div class="art-tag"><svg><use href="#i-sparkle"/></svg> VIRTUAL TRY-ON <span>în pregătire</span></div></div></div></div></section>
+<section class="editorial section"><div class="container"><div class="editorial-banner"><div class="editorial-bg">L</div><div class="editorial-content"><div class="eyebrow">MAI MULT DECÂT O PERECHE DE OCHELARI</div><h2>O alegere bună<br/> începe cu <em>tine.</em></h2><p>Probează ramele direct pe chip, cu camera sau o fotografie, fără să trimiți imaginile pe server.</p><button type="button" class="button button-white" data-action="tryon">Probează ochelarii acum <svg><use href="#i-arrow"/></svg></button></div><div class="editorial-art"><div class="decor-circle"></div><img src="./assets/tryon.webp" alt="Previzualizare concept de probă virtuală"/><div class="art-tag"><svg><use href="#i-sparkle"/></svg> VIRTUAL TRY-ON <span>disponibil</span></div></div></div></div></section>
 <section class="section clinics" id="clinici"><div class="container"><div class="clinic-grid"><div class="clinic-lead"><div class="eyebrow"><span class="eyebrow-line"></span> OPTICĂ MEDICALĂ MOBILĂ</div><h2>Vedere clară,<br/><span>oriunde ai nevoie.</span></h2><p>Lentis îți oferă servicii de optică medicală mobilă: consultații optometrice și soluții pentru vedere, inclusiv la tine acasă sau la firmă, în funcție de disponibilitate.</p><div class="clinic-bullets"><div><svg><use href="#i-check"/></svg> Consultații optometrice</div><div><svg><use href="#i-check"/></svg> Ochelari de vedere</div><div><svg><use href="#i-check"/></svg> Lentile de contact</div><div><svg><use href="#i-check"/></svg> La tine acasă / la firmă</div></div><div class="specialist-card"><span class="specialist-icon"><svg><use href="#i-user"/></svg></span><span><strong>Andrei Hâlcu</strong><small>Administrator · Tehnician optometrist</small></span></div><div class="clinic-actions"><button class="button button-primary" type="button" data-action="booking"><svg><use href="#i-calendar"/></svg> Solicită o consultație</button><a class="button button-secondary" href="tel:+40774987055">Sună acum</a></div></div>
 <div class="clinic-card"><div class="clinic-photo"><div class="clinic-window"></div><div class="clinic-wall"><span class="clinic-logo-small"><img src="./assets/lentis-symbol.png" alt=""/> Lentis</span><div class="clinic-counter"></div></div><div class="clinic-floor"></div><div class="clinic-chair c1"></div><div class="clinic-chair c2"></div></div><div class="clinic-info"><div class="clinic-status"><span class="status-dot"></span> OPTICĂ MEDICALĂ MOBILĂ</div><h3>Lentis · București, Sector 6</h3><p><svg><use href="#i-pin"/></svg> Adresă de contact: Prel. Ghencea nr. 94–100, Sector 6, București</p><p class="clinic-contact-line"><svg><use href="#i-headphones"/></svg> <a href="tel:+40774987055">0774 987 055</a> · <span>Facebook: Optica Lentis</span></p><div class="clinic-links"><a class="clinic-more" href="https://www.google.com/maps/search/?api=1&query=Prelungirea+Ghencea+94-100+Bucuresti" target="_blank" rel="noopener noreferrer">Vezi adresa <svg><use href="#i-arrow"/></svg></a><a class="clinic-more" href="https://www.facebook.com/search/top?q=Optica%20Lentis" target="_blank" rel="noopener noreferrer">Caută pe Facebook ↗</a></div></div></div>
 </div></div></section>
@@ -72,4 +82,5 @@
 <div class="overlay" id="overlay" hidden></div><aside class="drawer" id="drawer" aria-labelledby="drawerTitle" role="dialog" aria-modal="true" hidden><div class="drawer-head"><div><small>LENTIS</small><h2 id="drawerTitle">Coșul meu</h2></div><button class="icon-button close-button" aria-label="Închide" type="button" data-action="close"><svg><use href="#i-close"/></svg></button></div><div class="drawer-content" id="drawerContent"></div><div class="drawer-footer" id="drawerFooter"></div></aside>
 <dialog class="modal" id="modal"><div class="modal-shell"><button class="icon-button close-button modal-close" type="button" data-action="modal-close" aria-label="Închide"><svg><use href="#i-close"/></svg></button><div id="modalContent"></div></div></dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="consent-banner" id="consentBanner" hidden role="dialog" aria-label="Preferințe analiză trafic"><div><strong>Confidențialitatea ta contează.</strong><p>Folosim statistici de trafic doar cu acordul tău. Poți refuza și naviga normal. Nu păstrăm fotografiile din proba virtuală.</p></div><div class="consent-actions"><button type="button" id="rejectAnalytics">Refuz</button><button type="button" id="acceptAnalytics">Accept statistici</button></div></div>
 </body></html>
